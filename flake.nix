@@ -1,4 +1,4 @@
-{
+{  
   description = "My system";
 
   # Other flakes that we want to pull from
@@ -52,7 +52,7 @@
 
       # Global configuration for my systems
       globals = rec {
-        user = "RobertWinder";
+        user = "robertwinder";
         fullName = "RobertWi";
         gitName = fullName;
         gitEmail = "1311049+RobertWi@users.noreply.github.com";
@@ -80,7 +80,7 @@
 
       homeConfigurations = {
         MacProM3 =
-          darwinConfigurations.MacProM3.config.home-manager.users."Robert.Winder".home;
+          darwinConfigurations.MacProM3.config.home-manager.users."${globals.user}".home;
       };
      
       # Development environments
@@ -101,7 +101,6 @@
               consul
               vault
               awscli2
-              google-cloud-sdk
               ansible
               kubectl
               kubernetes-helm

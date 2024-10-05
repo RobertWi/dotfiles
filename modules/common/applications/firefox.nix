@@ -24,7 +24,7 @@
           name = "default";
           isDefault = true;
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-            keepassxc-browserƒ     
+            keepassxc-browser     
           ];
           settings = {
             "app.update.auto" = false;
