@@ -62,6 +62,12 @@
         dotfilesRepo = "github.com:RobertWi/dotfiles";
       };
 
+     # Common overlays to always use
+      overlays = [
+        inputs.nur.overlay
+        (import ./overlays/lib.nix)
+      ];
+ 
       # System types to support.
       supportedSystems =
         [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
@@ -71,21 +77,33 @@
 
     in rec {
 
+      nixosConfigurations = {
+        wsl = import ./hosts/wsl { inherit inputs globals overlays; };
+      };
+
       # Contains my full Mac system builds, including home-manager
       # darwin-rebuild switch --flake .#MacProM3
       darwinConfigurations = {
         MacProM3 =
-          import ./hosts/MacProM3 { inherit inputs globals; };
+          import ./hosts/MacProM3 { inherit inputs globals overlays; };
       };
 
       homeConfigurations = {
         MacProM3 =
           darwinConfigurations.MacProM3.config.home-manager.users."${globals.user}".home;
       };
-     
+      apps = forAllSystems (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = overlays ++ [       
+            ];
+          };
+        in import ./apps { inherit pkgs; });
+
       # Development environments
       devShells = forAllSystems (system:
-        let pkgs = import nixpkgs { inherit system; };
+        let pkgs = import nixpkgs { inherit system overlays; };
         in {
 
           # Used to run commands and edit files in this repo
