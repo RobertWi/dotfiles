@@ -104,7 +104,7 @@
         fullName = "Robert.Wi";
         gitName = fullName;
         gitEmail = "1311049+RobertWi@users.noreply.github.com;
-        mail.server = "noahmasur.com";
+        mail.server = "doemijdiemailmaar.nl";
         mail.imapHost = "mail.doemijdiemailmaar.nl";
         mail.smtpHost = "mail.doemijdiemailmaar.nl";
         dotfilesRepo = "git@github.com:RobertWi/dotfiles";
@@ -138,7 +138,7 @@
   #   };
 
       # Contains my full Mac system builds, including home-manager
-      # darwin-rebuild switch --flake .#lookingglassM
+      # darwin-rebuild switch --flake .#MacProM3
       darwinConfigurations = {
         MacProM3 =
           import ./hosts/MacProM3 { inherit inputs globals overlays; };
@@ -149,8 +149,8 @@
       homeConfigurations = {
         tempest =
           nixosConfigurations.tempest.config.home-manager.users.${globals.user}.home;
-        lookingglass =
-          darwinConfigurations.lookingglass.config.home-manager.users."Robert.Winder".home;
+        MacProM3 =
+          darwinConfigurations.MacProM3.config.home-manager.users."Robert.Winder".home;
       };
 
       # Disk formatting, only used once
