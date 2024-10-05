@@ -103,7 +103,7 @@
         user = "RobertWi";
         fullName = "Robert.Wi";
         gitName = fullName;
-        gitEmail = "1311049+RobertWi@users.noreply.github.com;
+        gitEmail = "1311049+RobertWi@users.noreply.github.com";
         mail.server = "doemijdiemailmaar.nl";
         mail.imapHost = "mail.doemijdiemailmaar.nl";
         mail.smtpHost = "mail.doemijdiemailmaar.nl";
