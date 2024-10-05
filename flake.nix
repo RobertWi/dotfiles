@@ -86,12 +86,7 @@
         MacProM3 =
           import ./hosts/MacProM3 { inherit inputs globals overlays; };
       };
-
-      # For quickly applying local settings with:
-      # home-manager switch --flake .#tempest
       homeConfigurations = {
-  #      tempest =
-  #        nixosConfigurations.tempest.config.home-manager.users.${globals.user}.home;
         MacProM3 =
           darwinConfigurations.MacProM3.config.home-manager.users."Robert.Winder".home;
       };
