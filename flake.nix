@@ -1,0 +1,245 @@
+{
+  description = "My system";
+
+  # Other flakes that we want to pull from
+  inputs = {
+
+    # Used for system packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Used for MacOS system config
+    darwin = {
+      url = "github:/lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Used for Windows Subsystem for Linux compatibility
+    wsl.url = "github:nix-community/NixOS-WSL";
+
+    # Used for user packages and dotfiles
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows =
+        "nixpkgs"; # Use system packages list where available
+    };
+
+    # Community packages; used for Firefox extensions
+    nur.url = "github:nix-community/nur";
+
+    # Use official Firefox binary for macOS
+    firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
+
+    # Manage disk format and partitioning
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Used to generate NixOS images for other platforms
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Convert Nix to Neovim config
+    nix2vim = {
+      url = "github:gytis-ivaskevicius/nix2vim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Nix language server
+    nil.url = "github:oxalica/nil/2023-04-03";
+
+    # Neovim plugins
+    nvim-lspconfig-src = {
+      url = "github:neovim/nvim-lspconfig";
+      flake = false;
+    };
+    cmp-nvim-lsp-src = {
+      url = "github:hrsh7th/cmp-nvim-lsp";
+      flake = false;
+    };
+    null-ls-nvim-src = {
+      url = "github:jose-elias-alvarez/null-ls.nvim";
+      flake = false;
+    };
+    Comment-nvim-src = {
+      url = "github:numToStr/Comment.nvim";
+      flake = false;
+    };
+    nvim-treesitter-src = {
+      url = "github:nvim-treesitter/nvim-treesitter/v0.8.5.2";
+      flake = false;
+    };
+    telescope-nvim-src = {
+      url = "github:nvim-telescope/telescope.nvim";
+      flake = false;
+    };
+    telescope-project-nvim-src = {
+      url = "github:nvim-telescope/telescope-project.nvim";
+      flake = false;
+    };
+    toggleterm-nvim-src = {
+      url = "github:akinsho/toggleterm.nvim";
+      flake = false;
+    };
+    bufferline-nvim-src = {
+      url = "github:akinsho/bufferline.nvim";
+      flake = false;
+    };
+    nvim-tree-lua-src = {
+      url = "github:kyazdani42/nvim-tree.lua";
+      flake = false;
+    };
+
+  };
+
+  outputs = { nixpkgs, ... }@inputs:
+
+    let
+
+      # Global configuration for my systems
+      globals = rec {
+        user = "RobertWi";
+        fullName = "Robert.Wi";
+        gitName = fullName;
+        gitEmail = "1311049+RobertWi@users.noreply.github.com;
+        mail.server = "noahmasur.com";
+        mail.imapHost = "mail.doemijdiemailmaar.nl";
+        mail.smtpHost = "mail.doemijdiemailmaar.nl";
+        dotfilesRepo = "git@github.com:RobertWi/dotfiles";
+      };
+
+      # Common overlays to always use
+      overlays = [
+        inputs.nur.overlay
+        inputs.nix2vim.overlay
+        (import ./overlays/neovim-plugins.nix inputs)
+        (import ./overlays/lib.nix)
+        (import ./overlays/calibre-web.nix)
+      ];
+
+      # System types to support.
+      supportedSystems =
+        [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+
+      # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+    in rec {
+
+      # Contains my full system builds, including home-manager
+      # nixos-rebuild switch --flake .#tempest
+  #    nixosConfigurations = {
+  #      tempest = import ./hosts/tempest { inherit inputs globals overlays; };
+  #      hydra = import ./hosts/hydra { inherit inputs globals overlays; };
+  #      flame = import ./hosts/flame { inherit inputs globals overlays; };
+  #      swan = import ./hosts/swan { inherit inputs globals overlays; };
+  #   };
+
+      # Contains my full Mac system builds, including home-manager
+      # darwin-rebuild switch --flake .#lookingglassM
+      darwinConfigurations = {
+        MacProM3 =
+          import ./hosts/MacProM3 { inherit inputs globals overlays; };
+      };
+
+      # For quickly applying local settings with:
+      # home-manager switch --flake .#tempest
+      homeConfigurations = {
+        tempest =
+          nixosConfigurations.tempest.config.home-manager.users.${globals.user}.home;
+        lookingglass =
+          darwinConfigurations.lookingglass.config.home-manager.users."Robert.Winder".home;
+      };
+
+      # Disk formatting, only used once
+      diskoConfigurations = { root = import ./disks/root.nix; };
+
+      packages = let
+        aws = system:
+          import ./generators/aws { inherit inputs globals overlays system; };
+        staff = system:
+          import ./generators/staff { inherit inputs globals overlays system; };
+        neovim = system:
+          let pkgs = import nixpkgs { inherit system overlays; };
+          in import ./modules/common/neovim/package {
+            inherit pkgs;
+            colors = (import ./colorscheme/gruvbox-dark).dark;
+          };
+      in {
+        x86_64-linux.aws = aws "x86_64-linux";
+        x86_64-linux.staff = staff "x86_64-linux";
+
+        # Package Neovim config into standalone package
+        x86_64-linux.neovim = neovim "x86_64-linux";
+        x86_64-darwin.neovim = neovim "x86_64-darwin";
+        aarch64-linux.neovim = neovim "aarch64-linux";
+        aarch64-darwin.neovim = neovim "aarch64-darwin";
+      };
+
+      # Programs that can be run by calling this flake
+      apps = forAllSystems (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = overlays ++ [
+              (final: prev: {
+                disko-packaged = inputs.disko.packages.${system}.disko;
+              })
+            ];
+          };
+        in import ./apps { inherit pkgs; });
+
+      # Development environments
+      devShells = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system overlays; };
+        in {
+
+          # Used to run commands and edit files in this repo
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [ git stylua nixfmt shfmt shellcheck ];
+          };
+
+          # Used for cloud and systems development and administration
+          devops = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              git
+              terraform
+              consul
+              vault
+              awscli2
+              google-cloud-sdk
+              ansible
+              kubectl
+              kubernetes-helm
+              kustomize
+              fluxcd
+            ];
+          };
+
+        });
+
+      # Templates for starting other projects quickly
+      templates = rec {
+        default = basic;
+        basic = {
+          path = ./templates/basic;
+          description = "Basic program template";
+        };
+        poetry = {
+          path = ./templates/poetry;
+          description = "Poetry template";
+        };
+        python = {
+          path = ./templates/python;
+          description = "Legacy Python template";
+        };
+        haskell = {
+          path = ./templates/haskell;
+          description = "Haskell template";
+        };
+      };
+
+    };
+}
