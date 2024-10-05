@@ -75,7 +75,7 @@
       # darwin-rebuild switch --flake .#MacProM3
       darwinConfigurations = {
         MacProM3 =
-          import ./hosts/MacProM3 { inherit inputs globals overlays; };
+          import ./hosts/MacProM3 { inherit inputs globals; };
       };
 
       homeConfigurations = {
@@ -85,7 +85,7 @@
      
       # Development environments
       devShells = forAllSystems (system:
-        let pkgs = import nixpkgs { inherit system overlays; };
+        let pkgs = import nixpkgs { inherit system; };
         in {
 
           # Used to run commands and edit files in this repo
