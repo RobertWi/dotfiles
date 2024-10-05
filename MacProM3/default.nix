@@ -27,8 +27,6 @@ darwin.lib.darwinSystem {
       dotfiles.enable = true;
       nixlang.enable = true;
       terraform.enable = true;
-      python.enable = true;
-      lua.enable = true;
       kubernetes.enable = true;
     }
   ];
