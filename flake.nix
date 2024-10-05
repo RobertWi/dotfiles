@@ -29,12 +29,6 @@
     # Use official Firefox binary for macOS
     firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
 
-    # Manage disk format and partitioning
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Used to generate NixOS images for other platforms
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -49,48 +43,6 @@
 
     # Nix language server
     nil.url = "github:oxalica/nil/2023-04-03";
-
-    # Neovim plugins
-    nvim-lspconfig-src = {
-      url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
-    cmp-nvim-lsp-src = {
-      url = "github:hrsh7th/cmp-nvim-lsp";
-      flake = false;
-    };
-    null-ls-nvim-src = {
-      url = "github:jose-elias-alvarez/null-ls.nvim";
-      flake = false;
-    };
-    Comment-nvim-src = {
-      url = "github:numToStr/Comment.nvim";
-      flake = false;
-    };
-    nvim-treesitter-src = {
-      url = "github:nvim-treesitter/nvim-treesitter/v0.8.5.2";
-      flake = false;
-    };
-    telescope-nvim-src = {
-      url = "github:nvim-telescope/telescope.nvim";
-      flake = false;
-    };
-    telescope-project-nvim-src = {
-      url = "github:nvim-telescope/telescope-project.nvim";
-      flake = false;
-    };
-    toggleterm-nvim-src = {
-      url = "github:akinsho/toggleterm.nvim";
-      flake = false;
-    };
-    bufferline-nvim-src = {
-      url = "github:akinsho/bufferline.nvim";
-      flake = false;
-    };
-    nvim-tree-lua-src = {
-      url = "github:kyazdani42/nvim-tree.lua";
-      flake = false;
-    };
 
   };
 
@@ -128,15 +80,6 @@
 
     in rec {
 
-      # Contains my full system builds, including home-manager
-      # nixos-rebuild switch --flake .#tempest
-  #    nixosConfigurations = {
-  #      tempest = import ./hosts/tempest { inherit inputs globals overlays; };
-  #      hydra = import ./hosts/hydra { inherit inputs globals overlays; };
-  #      flame = import ./hosts/flame { inherit inputs globals overlays; };
-  #      swan = import ./hosts/swan { inherit inputs globals overlays; };
-  #   };
-
       # Contains my full Mac system builds, including home-manager
       # darwin-rebuild switch --flake .#MacProM3
       darwinConfigurations = {
@@ -152,45 +95,7 @@
         MacProM3 =
           darwinConfigurations.MacProM3.config.home-manager.users."Robert.Winder".home;
       };
-
-      # Disk formatting, only used once
-      diskoConfigurations = { root = import ./disks/root.nix; };
-
-      packages = let
-        aws = system:
-          import ./generators/aws { inherit inputs globals overlays system; };
-        staff = system:
-          import ./generators/staff { inherit inputs globals overlays system; };
-        neovim = system:
-          let pkgs = import nixpkgs { inherit system overlays; };
-          in import ./modules/common/neovim/package {
-            inherit pkgs;
-            colors = (import ./colorscheme/gruvbox-dark).dark;
-          };
-      in {
-        x86_64-linux.aws = aws "x86_64-linux";
-        x86_64-linux.staff = staff "x86_64-linux";
-
-        # Package Neovim config into standalone package
-        x86_64-linux.neovim = neovim "x86_64-linux";
-        x86_64-darwin.neovim = neovim "x86_64-darwin";
-        aarch64-linux.neovim = neovim "aarch64-linux";
-        aarch64-darwin.neovim = neovim "aarch64-darwin";
-      };
-
-      # Programs that can be run by calling this flake
-      apps = forAllSystems (system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = overlays ++ [
-              (final: prev: {
-                disko-packaged = inputs.disko.packages.${system}.disko;
-              })
-            ];
-          };
-        in import ./apps { inherit pkgs; });
-
+     
       # Development environments
       devShells = forAllSystems (system:
         let pkgs = import nixpkgs { inherit system overlays; };
@@ -219,27 +124,6 @@
           };
 
         });
-
-      # Templates for starting other projects quickly
-      templates = rec {
-        default = basic;
-        basic = {
-          path = ./templates/basic;
-          description = "Basic program template";
-        };
-        poetry = {
-          path = ./templates/poetry;
-          description = "Poetry template";
-        };
-        python = {
-          path = ./templates/python;
-          description = "Legacy Python template";
-        };
-        haskell = {
-          path = ./templates/haskell;
-          description = "Haskell template";
-        };
-      };
 
     };
 }
