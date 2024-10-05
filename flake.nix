@@ -135,7 +135,7 @@
         hydra = import ./hosts/hydra { inherit inputs globals overlays; };
         flame = import ./hosts/flame { inherit inputs globals overlays; };
         swan = import ./hosts/swan { inherit inputs globals overlays; };
-    };
+      };
 
       # Contains my full Mac system builds, including home-manager
       # darwin-rebuild switch --flake .#MacProM3
