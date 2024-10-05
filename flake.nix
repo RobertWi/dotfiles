@@ -130,12 +130,12 @@
 
       # Contains my full system builds, including home-manager
       # nixos-rebuild switch --flake .#tempest
-  #    nixosConfigurations = {
-  #      tempest = import ./hosts/tempest { inherit inputs globals overlays; };
-  #      hydra = import ./hosts/hydra { inherit inputs globals overlays; };
-  #      flame = import ./hosts/flame { inherit inputs globals overlays; };
-  #      swan = import ./hosts/swan { inherit inputs globals overlays; };
-  #   };
+      nixosConfigurations = {
+        tempest = import ./hosts/tempest { inherit inputs globals overlays; };
+        hydra = import ./hosts/hydra { inherit inputs globals overlays; };
+        flame = import ./hosts/flame { inherit inputs globals overlays; };
+        swan = import ./hosts/swan { inherit inputs globals overlays; };
+    };
 
       # Contains my full Mac system builds, including home-manager
       # darwin-rebuild switch --flake .#MacProM3
