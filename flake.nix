@@ -52,8 +52,8 @@
 
       # Global configuration for my systems
       globals = rec {
-        user = "RobertWi";
-        fullName = "Robert.Wi";
+        user = "RobertWinder";
+        fullName = "RobertWi";
         gitName = fullName;
         gitEmail = "1311049+RobertWi@users.noreply.github.com";
         mail.server = "doemijdiemailmaar.nl";
@@ -62,19 +62,9 @@
         dotfilesRepo = "github.com:RobertWi/dotfiles";
       };
 
-      # Common overlays to always use
-      overlays = [
-        inputs.nur.overlay
-        inputs.nix2vim.overlay
-        (import ./overlays/neovim-plugins.nix inputs)
-        (import ./overlays/lib.nix)
-        (import ./overlays/calibre-web.nix)
-      ];
-
-
       # System types to support.
       supportedSystems =
-        [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+       [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
 
       # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
