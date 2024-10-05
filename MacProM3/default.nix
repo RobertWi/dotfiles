@@ -1,4 +1,4 @@
-# The Looking Glass
+# The MacProM3
 # System configuration for my work Macbook
 
 { inputs, globals, overlays, ... }:

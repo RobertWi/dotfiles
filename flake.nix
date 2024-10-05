@@ -107,7 +107,7 @@
         mail.server = "doemijdiemailmaar.nl";
         mail.imapHost = "mail.doemijdiemailmaar.nl";
         mail.smtpHost = "mail.doemijdiemailmaar.nl";
-        dotfilesRepo = "git@github.com:RobertWi/dotfiles";
+        dotfilesRepo = "github.com:RobertWi/dotfiles";
       };
 
       # Common overlays to always use
