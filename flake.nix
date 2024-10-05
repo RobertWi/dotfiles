@@ -130,12 +130,12 @@
 
       # Contains my full system builds, including home-manager
       # nixos-rebuild switch --flake .#tempest
-      nixosConfigurations = {
-        tempest = import ./hosts/tempest { inherit inputs globals overlays; };
-        hydra = import ./hosts/hydra { inherit inputs globals overlays; };
-        flame = import ./hosts/flame { inherit inputs globals overlays; };
-        swan = import ./hosts/swan { inherit inputs globals overlays; };
-      };
+  #    nixosConfigurations = {
+  #      tempest = import ./hosts/tempest { inherit inputs globals overlays; };
+  #      hydra = import ./hosts/hydra { inherit inputs globals overlays; };
+  #      flame = import ./hosts/flame { inherit inputs globals overlays; };
+  #      swan = import ./hosts/swan { inherit inputs globals overlays; };
+  #   };
 
       # Contains my full Mac system builds, including home-manager
       # darwin-rebuild switch --flake .#MacProM3
@@ -147,8 +147,8 @@
       # For quickly applying local settings with:
       # home-manager switch --flake .#tempest
       homeConfigurations = {
-        tempest =
-          nixosConfigurations.tempest.config.home-manager.users.${globals.user}.home;
+  #      tempest =
+  #        nixosConfigurations.tempest.config.home-manager.users.${globals.user}.home;
         MacProM3 =
           darwinConfigurations.MacProM3.config.home-manager.users."Robert.Winder".home;
       };
