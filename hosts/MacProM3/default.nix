@@ -1,7 +1,7 @@
 # The MacProM3
 # System configuration for my work Macbook
 
-{ inputs, globals, overlays, ... }:
+{ inputs, globals, ... }:
 
 with inputs;
 
