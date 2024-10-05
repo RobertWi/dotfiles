@@ -13,7 +13,7 @@ darwin.lib.darwinSystem {
     ../../modules/darwin
     (globals // rec {
       user = "RobertWi";
-      gitName = "RobertWi;
+      gitName = "RobertWi";
       gitEmail = "1311049+RobertWi@users.noreply.github.com";
     })
     home-manager.darwinModules.home-manager

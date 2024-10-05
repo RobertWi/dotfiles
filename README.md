@@ -1,1 +1,1 @@
-Some nix flake expiriment
+Some nix flake experiment
