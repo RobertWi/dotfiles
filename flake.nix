@@ -60,10 +60,6 @@
         mail.imapHost = "mail.doemijdiemailmaar.nl";
         mail.smtpHost = "mail.doemijdiemailmaar.nl";
         dotfilesRepo = "github.com:RobertWi/dotfiles";
-        dotfiles = {
-          enable = true;
-          path = "/dotfiles";
-        };
       };
 
      # Common overlays to always use

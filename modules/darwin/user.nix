@@ -1,21 +1,34 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   config = lib.mkIf pkgs.stdenv.isDarwin {
 
     users.users."${config.user}" = {
       # macOS user
       home = config.homePath;
-      shell = pkgs.zsh; # Default shell
-
+      # shell = pkgs.fish; # Default shell
     };
 
-    # Used for aerc
+    # This might fix the shell issues
+    # users.knownUsers = [ config.user ];
+
     home-manager.users.${config.user} = {
+
+      # Default shell setting doesn't work
       home.sessionVariables = {
-        XDG_CONFIG_HOME = "${config.homePath}/.config";
+        SHELL = "${pkgs.fish}/bin/fish";
       };
+
+      # Used for aerc
+      xdg.enable = true;
     };
 
+    # Fix for: 'Error: HOME is set to "/var/root" but we expect "/var/empty"'
+    home-manager.users.root.home.homeDirectory = lib.mkForce "/var/root";
   };
-
 }

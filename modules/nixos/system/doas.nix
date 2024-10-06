@@ -26,7 +26,7 @@
       };
     };
 
-    home-manager.users.${config.user}.programs.zsh.shellAliases = {
+    home-manager.users.${config.user}.programs.fish.shellAliases = {
       sudo = "doas";
     };
 
