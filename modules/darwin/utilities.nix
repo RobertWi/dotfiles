@@ -24,7 +24,7 @@
       pkgs.awscli2
       pkgs.ssm-session-manager-plugin
       pkgs.awslogs
-      pkgs.stu # TUI for AWS S3
+      # pkgs.stu # TUI for AWS S3
       pkgs.vault-bin
       pkgs.consul
       pkgs.keepassxc
