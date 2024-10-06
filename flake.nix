@@ -79,7 +79,9 @@
         wsl = import ./hosts/wsl { inherit inputs globals overlays; };
       };
 
-     
+      #Required for the once open tf
+      nixpkgs.config.allowUnfree = true;
+
       # Contains my full Mac system builds, including home-manager
       # darwin-rebuild switch --flake .#MacProM3
       darwinConfigurations = {

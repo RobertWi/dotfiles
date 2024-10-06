@@ -22,7 +22,7 @@ darwin.lib.darwinSystem {
       networking.hostName = "MacProM3";
       identityFile = "/Users/Robert.Winder/.ssh/id_ed25519";
       gui.enable = true;
-      mail.user = globals.user;
+#      mail.user = globals.user;
       firefox.enable = true;
       dotfiles.enable = true;
       nixlang.enable = true;
