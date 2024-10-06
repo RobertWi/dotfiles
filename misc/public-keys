@@ -1,0 +1,2 @@
+# Scan hosts: ssh-keyscan -t ed25519 <hostnames>
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKY6nuJCSm4E2tu+XCZmAAy/ZqHDR59UfsRVYYiS2Ki5 personal
