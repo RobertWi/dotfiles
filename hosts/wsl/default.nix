@@ -20,10 +20,10 @@ nixpkgs.lib.nixosSystem {
       nixpkgs.overlays = overlays;
       # Set registry to flake packages, used for nix X commands
       nix.registry.nixpkgs.flake = nixpkgs;
-      identityFile = "/home/${globals.user}/.ssh/id_ed25519";
       gui.enable = false;
-   # skip for now
-   # passwordHash = nixpkgs.lib.fileContents ../../password.sha512;
+      # skip for now user pw login
+      #identityFile = "/home/${globals.user}/.ssh/id_ed25519";
+      #passwordHash = nixpkgs.lib.fileContents ../../password.sha512;
       wsl = {
         enable = true;
         wslConf.automount.root = "/mnt";
