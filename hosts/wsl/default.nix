@@ -22,7 +22,8 @@ nixpkgs.lib.nixosSystem {
       nix.registry.nixpkgs.flake = nixpkgs;
       identityFile = "/home/${globals.user}/.ssh/id_ed25519";
       gui.enable = false;
-      passwordHash = nixpkgs.lib.fileContents ../../password.sha512;
+   # skip for now
+   # passwordHash = nixpkgs.lib.fileContents ../../password.sha512;
       wsl = {
         enable = true;
         wslConf.automount.root = "/mnt";
