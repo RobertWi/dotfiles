@@ -24,9 +24,9 @@
         brewfile = true; # Run brew bundle from anywhere
         lockfiles = false; # Don't save lockfile (since running from anywhere)
       };
-      taps = [
-        "" 
-      ];
+  #    taps = [
+  #      "" 
+  #    ];
       brews = [
         "trash" # Delete files and folders to trash instead of rm
       ];
