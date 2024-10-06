@@ -13,7 +13,6 @@
       gitCredentialHelper.enable = true;
       settings.git_protocol = "https";
       extensions = [
-        pkgs.gh-collaborators
         pkgs.gh-dash
       ];
     };

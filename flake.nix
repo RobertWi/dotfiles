@@ -69,7 +69,6 @@
       overlays = [
         inputs.nur.overlay
         (import ./overlays/lib.nix)
-        (import ./overlays/gh-collaborators.nix)
       ];
  
       # System types to support.
