@@ -25,7 +25,7 @@
         lockfiles = false; # Don't save lockfile (since running from anywhere)
       };
       taps = [
-        "homebrew/cask" # Required for casks
+        "" 
       ];
       brews = [
         "trash" # Delete files and folders to trash instead of rm
