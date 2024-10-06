@@ -29,11 +29,12 @@
       ];
       brews = [
         "trash" # Delete files and folders to trash instead of rm
-        "strongbox" # Store and get the goods secure and centralized
-        "firefox" 
       ];
       casks = [
         "podman-desktop"  # da container dekstop pulls in podman as well. 
+        "firefox"
+        "keepassxc"
+        "joplin"
 
       ];
     };
