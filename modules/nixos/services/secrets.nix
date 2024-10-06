@@ -55,7 +55,7 @@
 
     # Declare oneshot service to decrypt secret using SSH host key
     # - Requires that the secret is already encrypted for the host
-    # - Encrypt secrets: nix run github:nmasur/dotfiles#encrypt-secret
+    # - Encrypt secrets: nix run github:RobertWi/dotfiles#encrypt-secret
 
     systemd.services = lib.mapAttrs' (name: attrs: {
       name = "${name}-secret";

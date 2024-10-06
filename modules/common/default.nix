@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   imports =
-    [ ./applications ./programming ];
+    [ ./applications ./programming ./repositories ];
 
   options = {
     user = lib.mkOption {
