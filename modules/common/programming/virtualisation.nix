@@ -3,7 +3,10 @@
 
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
-        lima #allow native virtualization start with limactl start --vm-type=vz 
+        # allow native virtualization VM  
+        # limactl start --vm-type=vz template://ubuntu-lts 
+        # a vm of choice in seconds https://lima-vm.io/docs/templates/ 
+        lima 
       ];
 
     };
