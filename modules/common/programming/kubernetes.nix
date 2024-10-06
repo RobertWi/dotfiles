@@ -25,7 +25,7 @@
         #openlens
         velero
         node2nix
-        aws-azure-login
+        # aws-azure-login pulls in chromium no aarch64-darwin available
         stern
       ];
 
