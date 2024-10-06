@@ -11,11 +11,11 @@ darwin.lib.darwinSystem {
   modules = [
     ../../modules/common
     ../../modules/darwin
-    (globals // rec {
-      user = "RobertWi";
-      gitName = "RobertWi";
-      gitEmail = "1311049+RobertWi@users.noreply.github.com";
-    })
+ #   (globals // rec {
+ #     user = "RobertWi";
+ #     gitName = "RobertWi";
+ #     gitEmail = "1311049+RobertWi@users.noreply.github.com";
+ #   })
     home-manager.darwinModules.home-manager
     {
       nixpkgs.overlays = [ firefox-darwin.overlay ] ++ overlays;
