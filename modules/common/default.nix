@@ -91,7 +91,17 @@
     };
 
     # Basic common system packages for all devices
-    environment.systemPackages = with pkgs; [ git vim wget curl ];
+    environment.systemPackages = with pkgs; [ 
+      git 
+      vim 
+      wget 
+      curl 
+      du-dust
+      nmap
+      bat
+      dig
+      dos2unix
+      pyenv];
 
     # Use the system-level nixpkgs instead of Home Manager's
     home-manager.useGlobalPkgs = true;

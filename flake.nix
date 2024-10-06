@@ -120,11 +120,8 @@
               consul
               vault
               awscli2
-              ansible
-              kubectl
+              kubernetes
               kubernetes-helm
-              kustomize
-              fluxcd
             ];
           };
         }

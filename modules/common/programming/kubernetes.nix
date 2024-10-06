@@ -6,10 +6,27 @@
     home-manager.users.${config.user} = {
 
       home.packages = with pkgs; [
-        kubectl # Basic Kubernetes queries
-        kubernetes-helm # Helm CLI
-        fluxcd # Bootstrap clusters with Flux
-        kustomize # Kustomize CLI (for Flux)
+        kubectl 
+        eksctl
+        kubernetes-helm 
+        ssm-session-manager-plugin
+        saml2aws
+        aws-sso-cli
+        aws-sso-creds
+        granted
+        awsume
+        awslogs
+        eksctl
+        kcat
+        kubectx
+        kubetail
+        kubectl-doctor
+        tfk8s
+        openlens
+        velero
+        node2nix
+        aws-azure-login
+        stern
       ];
 
       programs.fish.shellAbbrs = {
