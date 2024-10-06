@@ -15,7 +15,6 @@ inputs.darwin.lib.darwinSystem {
     inputs.home-manager.darwinModules.home-manager
     inputs.mac-app-util.darwinModules.default
     {
-      nixpkgs.overlays = [ firefox-darwin.overlay ] ++ overlays;
       networking.hostName = "MacProM3";
       identityFile = "/Users/Robert.Winder/.ssh/id_ed25519";
       gui.enable = true;
