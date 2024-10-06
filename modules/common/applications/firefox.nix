@@ -12,7 +12,7 @@
   };
 
   config = lib.mkIf (config.gui.enable && config.firefox.enable) {
-    nixpkgs.overlays = [ inputs.nur.overlay ];
+    nixpkgs.overlays = [ nur.overlay ];
     
     home-manager.users.${config.user} = {
 
