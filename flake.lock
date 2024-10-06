@@ -341,21 +341,6 @@
         "type": "github"
       }
     },
-    "nur": {
-      "locked": {
-        "lastModified": 1728192139,
-        "narHash": "sha256-gysWw9JZpedKvCDiKa0fy64bhED9A7ABDfSalSfgs8E=",
-        "owner": "nix-community",
-        "repo": "nur",
-        "rev": "882ce566122ca45ad2f00ad868bfec184923d9db",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nur",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "darwin": "darwin",
@@ -366,7 +351,6 @@
         "nix2vim": "nix2vim",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_3",
-        "nur": "nur",
         "wsl": "wsl"
       }
     },
