@@ -52,7 +52,7 @@
     unfreePackages = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = "List of unfree packages to allow.";
-      default = [ ];
+      default = [ ] ;
     };
   };
 
