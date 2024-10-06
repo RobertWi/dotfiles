@@ -12,10 +12,8 @@
   };
 
   config = lib.mkIf (config.gui.enable && config.firefox.enable) {
-    nixpkgs.overlays = [ nur.overlay ];
     
     home-manager.users.${config.user} = {
-
       programs.firefox = {
         enable = true;
         package =
@@ -25,9 +23,6 @@
           id = 0;
           name = "default";
           isDefault = true;
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-            keepassxc-browser     
-          ];
           settings = {
             "app.update.auto" = false;
             "browser.aboutConfig.showWarning" = false;

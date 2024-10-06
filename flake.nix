@@ -23,9 +23,6 @@
         "nixpkgs"; # Use system packages list where available
     };
 
-    # Community packages; used for Firefox extensions
-    nur.url = "github:nix-community/nur";
-
     # Use official Firefox binary for macOS
     firefox-darwin.url = "github:bandithedoge/nixpkgs-firefox-darwin";
 
@@ -67,7 +64,6 @@
 
      # Common overlays to always use
       overlays = [
-        inputs.nur.overlay
         (import ./overlays/lib.nix)
       ];
  
