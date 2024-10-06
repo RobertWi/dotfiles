@@ -7,6 +7,7 @@
     ./nixpkgs.nix
     ./system.nix
     ./user.nix
+    ./utilities.nix
   ];
 
 }

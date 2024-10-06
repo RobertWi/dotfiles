@@ -33,9 +33,6 @@
       casks = [
         "podman-desktop"  # da container dekstop pulls in podman as well. 
         "firefox"
-        "keepassxc"
-        "joplin"
-
       ];
     };
 
