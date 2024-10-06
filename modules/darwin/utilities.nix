@@ -10,7 +10,6 @@
   unfreePackages = [
     "consul"
     "vault-bin"
-    "teams"
   ];
 
   home-manager.users.${config.user} = lib.mkIf pkgs.stdenv.isDarwin {
@@ -30,6 +29,7 @@
       pkgs.consul
       pkgs.joplin
       pkgs.keepassxc
+      pkgs.iterm2
       pkgs.noti # Create notifications programmatically
       pkgs.ipcalc # Make IP network calculations
       (pkgs.writeShellApplication {
