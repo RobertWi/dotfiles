@@ -27,7 +27,6 @@
       pkgs.stu # TUI for AWS S3
       pkgs.vault-bin
       pkgs.consul
-      pkgs.joplin
       pkgs.keepassxc
       pkgs.iterm2
       pkgs.noti # Create notifications programmatically

@@ -49,7 +49,7 @@
             t2gp) organization="take-two-t2gp" ;;
             pd) organization="private-division" ;;
             dots) organization="playdots" ;;
-            *) organization="nmasur" ;;
+            *) organization="RobertWi" ;;
         esac
 
         selected=$(gh repo list "$organization" \
@@ -71,7 +71,7 @@
         )
         [ -n "''${selected}" ] && {
             directory="$HOME/dev/work"
-            if [ $organization = "nmasur" ]; then directory="$HOME/dev/personal"; fi
+            if [ $organization = "RobertWi" ]; then directory="$HOME/dev/personal"; fi
             repo=$(echo "''${selected}" | awk '{print $1}')
             repo_full="''${organization}/''${repo}"
             if [ ! -d "''${directory}/''${repo}" ]; then

@@ -33,6 +33,7 @@
       casks = [
         "podman-desktop"  # da container dekstop pulls in podman as well. 
         "firefox"
+        "joplin" marked as broken in nixos
       ];
     };
 
