@@ -64,7 +64,7 @@
         inputs.nur.overlay
         (import ./overlays/lib.nix)
         (import ./overlays/gh-collaborators.nix)
-       (import ./overlays/ren-rep.nix inputs)
+        (import ./overlays/ren-rep.nix inputs)
       ];
  
       # System types to support.
