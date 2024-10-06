@@ -22,7 +22,7 @@ inputs.darwin.lib.darwinSystem {
     inputs.mac-app-util.darwinModules.default
     {
       networking.hostName = "MacProM3";
-      identityFile = "/Users/${user}/.ssh/id_ed25519";
+      identityFile = "/Users/${globals.user}/.ssh/id_ed25519";
       gui.enable = true;
       firefox.enable = true;
       dotfiles.enable = true;
