@@ -17,7 +17,7 @@
 
     system = {
 
-      stateVersion = 24.05;
+      stateVersion = 5;
 
       keyboard = {
         remapCapsLockToControl = true;
