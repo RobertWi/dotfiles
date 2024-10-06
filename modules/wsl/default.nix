@@ -9,10 +9,10 @@
 
     # Replace config directory with our repo, since it sources from config on
     # every launch
-    system.activationScripts.configDir.text = ''
-      rm -rf /etc/nixos
-      ln --symbolic --no-dereference --force ${config.dotfilesPath} /etc/nixos
-    '';
+    #system.activationScripts.configDir.text = ''
+    #  rm -rf /etc/nixos
+    #  ln --symbolic --no-dereference --force ${config.dotfilesPath} /etc/nixos
+    #'';
 
   };
 

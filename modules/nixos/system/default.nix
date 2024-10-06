@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
 
-  imports = [ ./doas.nix ./journald.nix ./user.nix ];
+  imports = [ ./doas.nix ./journald.nix ./user.nix ./security.nix ];
 
   config = lib.mkIf pkgs.stdenv.isLinux {
 
