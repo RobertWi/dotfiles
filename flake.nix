@@ -46,6 +46,9 @@
 
     # Nix language server
     nil.url = "github:oxalica/nil/2023-04-03";
+    
+    #need to pin as things fail with latest
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
   };
 
