@@ -6,7 +6,7 @@
 with inputs;
 
 nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
+  system = "aarch64-darwin";
   specialArgs = { };
   modules = [
     ../../modules/common
