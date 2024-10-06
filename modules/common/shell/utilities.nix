@@ -33,8 +33,8 @@ in
         lf # File viewer
         qrencode # Generate qr codes
         rsync # Copy folders
-        ren # Rename files
-        rep # Replace text in files
+        ren-find # Rename files
+        rep-grep # Replace text in files
         ripgrep # grep
         sd # sed
         tealdeer # Cheatsheets

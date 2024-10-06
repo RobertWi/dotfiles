@@ -46,10 +46,10 @@
 
   };
 
-  outputs = { nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
 
     let
-
+      
       # Global configuration for my systems
       globals = rec {
         user = "robertwinder";
@@ -64,7 +64,6 @@
         inputs.nur.overlay
         (import ./overlays/lib.nix)
         (import ./overlays/gh-collaborators.nix)
-        (import ./overlays/ren-rep.nix inputs)
       ];
  
       # System types to support.
@@ -80,6 +79,7 @@
         wsl = import ./hosts/wsl { inherit inputs globals overlays; };
       };
 
+     
       # Contains my full Mac system builds, including home-manager
       # darwin-rebuild switch --flake .#MacProM3
       darwinConfigurations = {
