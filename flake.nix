@@ -41,6 +41,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Better App install management in macOS
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use system packages list for their inputs
+    };
+
     # Nix language server
     nil.url = "github:oxalica/nil/2023-04-03";
 
