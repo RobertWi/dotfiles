@@ -56,9 +56,6 @@
         fullName = "RobertWi";
         gitName = fullName;
         gitEmail = "1311049+RobertWi@users.noreply.github.com";
-        mail.server = "doemijdiemailmaar.nl";
-        mail.imapHost = "mail.doemijdiemailmaar.nl";
-        mail.smtpHost = "mail.doemijdiemailmaar.nl";
         dotfilesRepo = "github.com:RobertWi/dotfiles";
       };
 
@@ -66,6 +63,8 @@
       overlays = [
         inputs.nur.overlay
         (import ./overlays/lib.nix)
+        (import ./overlays/gh-collaborators.nix)
+       (import ./overlays/ren-rep.nix inputs)
       ];
  
       # System types to support.

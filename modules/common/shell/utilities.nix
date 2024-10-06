@@ -34,7 +34,7 @@ in
         qrencode # Generate qr codes
         rsync # Copy folders
         ren # Rename files
-        # rep # Replace text in files
+        rep # Replace text in files
         ripgrep # grep
         sd # sed
         tealdeer # Cheatsheets
@@ -58,7 +58,6 @@ in
       programs.bat = {
         enable = true; # cat replacement
         config = {
-          theme = config.theme.colors.batTheme;
           pager = "less -R"; # Don't auto-exit if one screen
         };
       };
