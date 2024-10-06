@@ -92,6 +92,7 @@
         MacProM3 =
           darwinConfigurations.MacProM3.config.home-manager.users."${globals.user}".home;
       };
+
       apps = forAllSystems (system:
         let
           pkgs = import nixpkgs {
@@ -99,7 +100,8 @@
             overlays = overlays ++ [       
             ];
           };
-        in import ./apps { inherit pkgs; });
+        in import ./apps { inherit pkgs; }
+      );
 
       # Development environments
       devShells = forAllSystems (system:
@@ -126,6 +128,7 @@
               fluxcd
             ];
           };
-        });
+        }
+      );
   };
 } 

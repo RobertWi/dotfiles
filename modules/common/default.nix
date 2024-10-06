@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   imports =
-    [ ./applications ./mail ./neovim ./programming ./repositories ./shell ];
+    [ ./applications ./programming ];
 
   options = {
     user = lib.mkOption {
@@ -23,7 +23,7 @@
     };
     identityFile = lib.mkOption {
       type = lib.types.str;
-      description = "Path to existing private key file.";
+      description = "Path to existing private key file.itcw";
       default = "/etc/ssh/ssh_host_ed25519_key";
     };
     gui = {
