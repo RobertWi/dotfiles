@@ -3,8 +3,6 @@
 
 { inputs, globals, overlays, ... }:
 
-
-
 inputs.darwin.lib.darwinSystem {
   system = "aarch64-darwin";
   specialArgs = { };
