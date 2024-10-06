@@ -47,7 +47,7 @@
               true; # Allow userChrome.css
             "layout.css.color-mix.enabled" = true;
             "ui.systemUsesDarkTheme" =
-              if config.theme.dark == true then 1 else 0;
+              if theme.dark == true then 1 else 0;
             "media.ffmpeg.vaapi.enabled" =
               true; # Enable hardware video acceleration
             "cookiebanners.ui.desktop.enabled" = true; # Reject cookie popups

@@ -49,7 +49,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nur, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
 
     let
       
