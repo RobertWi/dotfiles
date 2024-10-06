@@ -1,18 +1,19 @@
 # The MacProM3
 # System configuration for my work Macbook
 
-{ inputs, globals, ... }:
+{ inputs, globals, overlays, ... }:
 
-with inputs;
 
-darwin.lib.darwinSystem {
-  system = "x86_64-darwin";
+
+inputs.darwin.lib.darwinSystem {
+  system = "aarch64-darwin";
   specialArgs = { };
   modules = [
     ../../modules/common
     ../../modules/darwin
 
-    home-manager.darwinModules.home-manager
+    inputs.home-manager.darwinModules.home-manager
+    inputs.mac-app-util.darwinModules.default
     {
       nixpkgs.overlays = [ firefox-darwin.overlay ] ++ overlays;
       networking.hostName = "MacProM3";
