@@ -22,7 +22,7 @@
         kubetail
         kubectl-doctor
         tfk8s
-        openlens
+        #openlens
         velero
         node2nix
         aws-azure-login
