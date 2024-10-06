@@ -5,7 +5,10 @@
   inputs = {
 
     # Used for system packages
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    #need to pin as things fail with latest
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     # Used for MacOS system config
     darwin = {
@@ -46,9 +49,6 @@
 
     # Nix language server
     nil.url = "github:oxalica/nil/2023-04-03";
-    
-    #need to pin as things fail with latest
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
   };
 
