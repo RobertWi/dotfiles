@@ -21,7 +21,7 @@
 
     # Used for user packages and dotfiles
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:NixOS/nixpkgs/nixos-24.05";
       inputs.nixpkgs.follows =
         "nixpkgs"; # Use system packages list where available
     };
