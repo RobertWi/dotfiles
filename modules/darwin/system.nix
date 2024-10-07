@@ -98,9 +98,9 @@
           tilesize = 44;
 
           persistent-apps = [
-            "/Applications/Alacritty.app"
-            "/Applications/KeepassXC.app"
-            "/Applications/Obsidian.app"
+            "${pkgs.alacritty}/Applications/Alacritty.app"
+            "${pkgs.keepasssxc}/Applications/KeepassXC.app"
+            "${pkgs.obsidian}/Applications/Obsidian.app"
           ];
         };
 
