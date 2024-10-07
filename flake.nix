@@ -62,7 +62,7 @@
         fullName = "RobertWi";
         gitName = fullName;
         gitEmail = "1311049+RobertWi@users.noreply.github.com";
-        dotfilesRepo = "https://github.com:RobertWi/dotfiles";
+        dotfilesRepo = "https://github.com/RobertWi/dotfiles";
       };
 
      # Common overlays to always use
