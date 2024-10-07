@@ -1,4 +1,10 @@
-{ pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   config = lib.mkIf pkgs.stdenv.isDarwin {
 
@@ -36,8 +42,8 @@
           # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
           AppleKeyboardUIMode = 3;
 
-          # Automatically show and hide the menu bar
-          _HIHideMenuBar = true;
+          # Only hide menu bar in fullscreen
+          _HIHideMenuBar = false;
 
           # Expand save panel by default
           NSNavPanelExpandedStateForSaveMode = true;
@@ -90,6 +96,10 @@
           orientation = "bottom";
           show-recents = false;
           tilesize = 44;
+
+          persistent-apps = [
+            "/Applications/Strongbox.app"
+          ];
         };
 
         finder = {
@@ -105,7 +115,6 @@
 
           # Allow quitting of Finder application
           QuitMenuItem = true;
-
         };
 
         # Disable "Are you sure you want to open" dialog
@@ -114,41 +123,62 @@
         # Disable trackpad tap to click
         trackpad.Clicking = false;
 
-        # universalaccess = {
-
-        #   # Zoom in with Control + Scroll Wheel
-        #   closeViewScrollWheelToggle = true;
-        #   closeViewZoomFollowsFocus = true;
-        # };
-
         # Where to save screenshots
         screencapture.location = "~/Downloads";
 
+        CustomUserPreferences = {
+          # Disable disk image verification
+          "com.apple.frameworks.diskimages" = {
+            skip-verify = true;
+            skip-verify-locked = true;
+            skip-verify-remote = true;
+          };
+          # Avoid creating .DS_Store files on network or USB volumes
+          "com.apple.desktopservices" = {
+            DSDontWriteNetworkStores = true;
+            DSDontWriteUSBStores = true;
+          };
+          "com.apple.dock" = {
+            magnification = true;
+            largesize = 48;
+          };
+          # Require password immediately after screen saver begins
+          "com.apple.screensaver" = {
+            askForPassword = 1;
+            askForPasswordDelay = 0;
+          };
+          "com.apple.finder" = {
+            # Disable the warning before emptying the Trash
+            WarnOnEmptyTrash = false;
+
+            # Finder search in current folder by default
+            FXDefaultSearchScope = "SCcf";
+
+            # Default Finder window set to column view
+            FXPreferredViewStyle = "clmv";
+          };
+          "leits.MeetingBar" = {
+            eventTimeFormat = ''"show"'';
+            eventTitleFormat = ''"none"'';
+            eventTitleIconFormat = ''"iconCalendar"'';
+            teamsBrowser = ''{"deletable":true,"arguments":"","name":"Teams","path":""}'';
+            KeyboardShortcuts_joinEventShortcut = ''{"carbonModifiers":6400,"carbonKeyCode":38}'';
+            timeFormat = ''"24-hour"'';
+          };
+        };
+
+        CustomSystemPreferences = {
+
+        };
       };
 
       # Settings that don't have an option in nix-darwin
       activationScripts.postActivation.text = ''
-        echo "Disable disk image verification"
-        defaults write com.apple.frameworks.diskimages skip-verify -bool true
-        defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-        defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
-
-        echo "Avoid creating .DS_Store files on network volumes"
-        defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-        echo "Disable the warning before emptying the Trash"
-        defaults write com.apple.finder WarnOnEmptyTrash -bool false
-
-        echo "Require password immediately after sleep or screen saver begins"
-        defaults write com.apple.screensaver askForPassword -int 1
-        defaults write com.apple.screensaver askForPasswordDelay -int 0
-
         echo "Allow apps from anywhere"
         SPCTL=$(spctl --status)
         if ! [ "$SPCTL" = "assessments disabled" ]; then
             sudo spctl --master-disable
         fi
-
       '';
 
       # User-level settings
@@ -156,32 +186,10 @@
         echo "Show the ~/Library folder"
         chflags nohidden ~/Library
 
-        echo "Enable dock magnification"
-        defaults write com.apple.dock magnification -bool true
-
-        echo "Set dock magnification size"
-        defaults write com.apple.dock largesize -int 48
-
-        echo "Define dock icon function"
-        __dock_item() {
-            printf "%s%s%s%s%s" \
-                   "<dict><key>tile-data</key><dict><key>file-data</key><dict>" \
-                   "<key>_CFURLString</key><string>" \
-                   "$1" \
-                   "</string><key>_CFURLStringType</key><integer>0</integer>" \
-                   "</dict></dict></dict>"
-        }
-
-        echo "Choose and order dock icons"
-        defaults write com.apple.dock persistent-apps -array \
-            "$(__dock_item /System/Applications/Calendar.app)" \
-            "$(__dock_item /System/Applications/Messages.app)" \
-            "$(__dock_item /System/Applications/Mail.app)" \
-            "$(__dock_item /System/Applications/System\ Settings.app)"
+        echo "Reduce Menu Bar padding"
+        defaults write -globalDomain NSStatusItemSelectionPadding -int 6
+        defaults write -globalDomain NSStatusItemSpacing -int 6
       '';
-
     };
-
   };
-
 }
