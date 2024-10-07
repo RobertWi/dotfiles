@@ -27,6 +27,7 @@ inputs.darwin.lib.darwinSystem {
       firefox.enable = true;
       dotfiles.enable = true;
       nixlang.enable = true;
+      obsidian.enable = true;
       terraform.enable = true;
       kubernetes.enable = true;
     }
