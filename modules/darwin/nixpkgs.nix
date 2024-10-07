@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }: {
 
+  nixpkgs.hostPlatform = "aarch64-apple-darwin"
+
   home-manager.users.${config.user} = lib.mkIf pkgs.stdenv.isDarwin {
 
     programs.fish = {

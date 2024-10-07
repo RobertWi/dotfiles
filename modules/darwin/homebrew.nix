@@ -29,6 +29,7 @@
   #    ];
       brews = [
         "trash" # Delete files and folders to trash instead of rm
+        "mas" 
       ];
       casks = [
         "podman-desktop"  # da container dekstop pulls in podman as well. 
@@ -36,6 +37,10 @@
         "joplin" #marked as broken in nixos
         "mongodb-compass" # not available on aarch64-apple-darwin
       ];
+      # masApps needs ID with mas cli > mas search Yoink
+      masApps = {
+        "Yoink" = 457622435;
+      };
     };
 
   };
