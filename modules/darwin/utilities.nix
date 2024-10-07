@@ -27,8 +27,8 @@
       # pkgs.stu # TUI for AWS S3
       pkgs.vault-bin
       pkgs.consul
-      pkgs.keepassxc
-      pkgs.iterm2
+      #pkgs.keepassxc
+      #pkgs.iterm2
       pkgs.noti # Create notifications programmatically
       pkgs.ipcalc # Make IP network calculations
       (pkgs.writeShellApplication {
