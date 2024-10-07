@@ -8,7 +8,7 @@
     home-manager.users.${config.user} = {
       programs.fish.shellAbbrs = {
         # Terraform
-        te = "terraform";
+        tf = "terraform";
       };
       home.packages = with pkgs; [
         terraform # Terraform executable
