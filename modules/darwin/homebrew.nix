@@ -32,8 +32,9 @@
       ];
       casks = [
         "podman-desktop"  # da container dekstop pulls in podman as well. 
-        "firefox"
+        "firefox" # not available on aarch64-apple-darwin
         "joplin" #marked as broken in nixos
+        "mongodb-compass" # not available on aarch64-apple-darwin
       ];
     };
 
