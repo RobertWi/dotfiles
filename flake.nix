@@ -8,7 +8,7 @@
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     #need to pin as things fail with latest
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-latest";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Used for MacOS system config
     darwin = {
