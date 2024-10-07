@@ -99,7 +99,7 @@
 
           persistent-apps = [
             "${pkgs.alacritty}/Applications/Alacritty.app"
-            "${pkgs.keepasssxc}/Applications/KeepassXC.app"
+            "${pkgs.keepassxc}/Applications/KeepassXC.app"
             "${pkgs.obsidian}/Applications/Obsidian.app"
           ];
         };
