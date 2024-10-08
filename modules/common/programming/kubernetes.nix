@@ -26,7 +26,7 @@
         velero
         node2nix
         # aws-azure-login pulls in chromium no aarch64-darwin available
-        sternsa
+        stern
       ];
 
       programs.fish.shellAbbrs = {
