@@ -1,8 +1,16 @@
 { config, pkgs, lib, ... }: {
 
-  unfreePackages = [ 
-    "vscode"
-  ];
+  options = {
+    devel = {
+      enable = lib.mkEnableOption {
+        description = "Development tools";
+        default = false;
+      };
+    };
+  };
+
+  config = lib.mkIf (config.gui.enable && config.devel.enable) {
+    unfreePackages = [ "vscode" ];
   
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
@@ -13,4 +21,5 @@
       ];
 
     };
+  };
 }

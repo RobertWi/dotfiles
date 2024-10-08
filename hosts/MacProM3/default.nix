@@ -33,7 +33,7 @@ inputs.darwin.lib.darwinSystem {
       obsidian.enable = true;
       terraform.enable = true;
       kubernetes.enable = true;
-      virtualizations.enable = true; 
+      virtualisation.enable = true; 
     }
   ];
 }
