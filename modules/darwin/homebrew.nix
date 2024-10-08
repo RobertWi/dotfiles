@@ -36,6 +36,7 @@
         "firefox" # not available on aarch64-apple-darwin
         "joplin" #marked as broken in nixos
         "mongodb-compass" # not available on aarch64-apple-darwin
+        "nosqlbooster-for-mongodb" # not available on nix
       ];
       # masApps needs ID with mas cli > mas search Yoink
       masApps = {

@@ -10,11 +10,17 @@
   };
 
   config = lib.mkIf (config.gui.enable && config.devel.enable) {
-    unfreePackages = [ "vscode" ];
+    unfreePackages = [ 
+      "vscode"
+      "vscode-extensions.github.copilot"
+      "vscode-extensions.github.copilot-chat"
+    ];
   
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
         vscode
+        vscode-extensions.github.copilot
+        vscode-extensions.github.copilot-chat
         vscode-extensions.hashicorp.hcl   
         vscode-extensions.hashicorp.terraform
         #more to come

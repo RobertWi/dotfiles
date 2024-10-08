@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf (config.gui.enable && config.db.enable) {
-    unfreePackages = [ "mongodb-compass" ];
+    #unfreePackages = [ "mongodb-compass" ];
 
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
