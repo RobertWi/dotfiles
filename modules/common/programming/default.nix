@@ -6,7 +6,7 @@
     ./devel.nix
     ./nix.nix
     ./terraform.nix
-    ./virtualization.nix
+    ./virtualisation.nix
   ];
 
 }
