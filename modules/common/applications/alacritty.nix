@@ -33,7 +33,7 @@
             };
             opacity = 1.0;
           };
-          scrolling.history = 10000;
+          scrolling.history = 20000;
           font = {
             size = 18.0;
           };

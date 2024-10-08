@@ -7,7 +7,7 @@
 
     programs.alacritty.settings = { 
       font.normal.family = "VictorMono";
-      size = 25.0;
+      size = 35.0;
     };
 
     programs.kitty.font = {

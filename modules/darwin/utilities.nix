@@ -28,7 +28,7 @@
       pkgs.vault-bin
       pkgs.consul
       pkgs.keepassxc
-      pkgs.iterm2
+      pkgs.lynx
       pkgs.mkalias
       pkgs.noti # Create notifications programmatically
       pkgs.ipcalc # Make IP network calculations
