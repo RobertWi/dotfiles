@@ -35,7 +35,7 @@
           };
           scrolling.history = 10000;
           font = {
-            size = 14.0;
+            size = 18.0;
           };
           key_bindings = [
             # Used for word completion in fish_user_key_bindings
