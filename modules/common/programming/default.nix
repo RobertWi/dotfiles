@@ -7,6 +7,7 @@
     ./nix.nix
     ./terraform.nix
     ./virtualisation.nix
+    ./lua.nix
   ];
 
 }
