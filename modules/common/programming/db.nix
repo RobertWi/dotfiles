@@ -14,7 +14,7 @@
 
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
-        mongodb-compass
+        #mongodb-compass no aarch64-apple-darwin available move to brew
         mongodb-tools
         mongosh
       ];
