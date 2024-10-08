@@ -11,9 +11,9 @@
 
   config = lib.mkIf (config.gui.enable && config.devel.enable) {
     unfreePackages = [ 
-      vscode
-      vscode-extensions.github.copilot
-      vscode-extensions.github.copilot-chat
+      "vscode"
+      "vscode-extensions.github.copilot"
+      "vscode-extensions.github.copilot-chat"
     ];
   
     home-manager.users.${config.user} = {
