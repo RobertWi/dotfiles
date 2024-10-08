@@ -9,16 +9,17 @@
     };
   };
 
-  config = lib.mkIf (config.gui.enable && config.virtualisation.enable);
+  config = lib.mkIf (config.gui.enable && config.virtualisation.enable) {
 
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
-        # allow native virtualisation VM  
+        # allow native virtualization VM  
         # limactl start --vm-type=vz template://ubuntu-lts 
         # a vm of choice in seconds https://lima-vm.io/docs/templates/ 
         lima
         qemu
         podman
       ];  
-     };    
+     };
+  };
 }
