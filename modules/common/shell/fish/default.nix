@@ -8,6 +8,7 @@
 
   users.users.${config.user}.shell = pkgs.fish;
   programs.fish.enable = true; # Needed for LightDM to remember username
+  programms.zsh.enable = true; # keep zsh available
 
   home-manager.users.${config.user} = {
 
