@@ -17,7 +17,7 @@
         # limactl start --vm-type=vz template://ubuntu-lts 
         # a vm of choice in seconds https://lima-vm.io/docs/templates/ 
         lima
-        nerctl
+        nerdctl
         qemu
         podman
       ];  
