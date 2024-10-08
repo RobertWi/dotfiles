@@ -45,7 +45,7 @@
           k9s = {
             ui = {
               enableMouse = true;
-              headless = true;
+              headless = false;
               logoless = true;
               crumbsless = false;
               skin = "main";
