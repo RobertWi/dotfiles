@@ -19,8 +19,9 @@
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
         vscode
-        vscode-extensions.github.copilot
-        vscode-extensions.github.copilot-chat
+       #fixme not adhering to unfree above
+       # vscode-extensions.github.copilot
+       # vscode-extensions.github.copilot-chat
         vscode-extensions.hashicorp.hcl   
         vscode-extensions.hashicorp.terraform
         #more to come
