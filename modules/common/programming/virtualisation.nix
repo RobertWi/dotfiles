@@ -10,7 +10,8 @@
   };
 
   config = lib.mkIf (config.gui.enable && config.virtualisation.enable);
-      home-manager.users.${config.user} = {
+
+    home-manager.users.${config.user} = {
       home.packages = with pkgs; [
         # allow native virtualisation VM  
         # limactl start --vm-type=vz template://ubuntu-lts 
@@ -19,5 +20,5 @@
         qemu
         podman
       ];  
-  };    
+     };    
 }
