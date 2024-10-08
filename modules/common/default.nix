@@ -101,7 +101,8 @@
       bat
       dig
       dos2unix
-      devenv];
+      devenv
+    ];
 
     # Use the system-level nixpkgs instead of Home Manager's
     home-manager.useGlobalPkgs = true;
