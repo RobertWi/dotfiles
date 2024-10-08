@@ -23,13 +23,17 @@ inputs.darwin.lib.darwinSystem {
     {
       networking.hostName = "MacProM3";
       identityFile = "/Users/${globals.user}/.ssh/id_ed25519";
+      db.enable = true;
+      devel.enable = true; 
       gui.enable = true;
       firefox.enable = true;
       dotfiles.enable = true;
       nixlang.enable = true;
+      lua.enable = true;
       obsidian.enable = true;
       terraform.enable = true;
       kubernetes.enable = true;
+      virtualizations.enable = true; 
     }
   ];
 }

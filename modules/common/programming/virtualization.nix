@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }: {
 
+  options.virtualization.enable = lib.mkEnableOption "Virtualizations tools.";
+
+  config = lib.mkIf config.kubernetes.enable {
 
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
@@ -10,4 +13,5 @@
       ];
 
     };
+  };
 }

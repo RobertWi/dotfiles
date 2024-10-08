@@ -39,7 +39,7 @@
       ];
       # masApps needs ID with mas cli > mas search Yoink
       masApps = {
-        "Yoink" = 457622435;
+        "Strongbox" = 897283731;
       };
     };
 
