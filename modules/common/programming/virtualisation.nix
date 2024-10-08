@@ -3,7 +3,7 @@
   options = {
     virtualisation = {
       enable = lib.mkEnableOption {
-        description = "Enable virtualisation.";
+        description = "Enable virtualisation";
         default = false;
       };
     };
