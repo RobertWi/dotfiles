@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }: {
 
   options = {
-    obsidian = {
+    virtualisation = {
       enable = lib.mkEnableOption {
-        description = "Enable Obsidian.";
+        description = "Enable virtualisation.";
         default = false;
       };
     };
