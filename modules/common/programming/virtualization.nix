@@ -1,8 +1,15 @@
 { config, pkgs, lib, ... }: {
 
-  options.virtualization.enable = lib.mkEnableOption "Virtualizations tools.";
+  options = {
+    obsidian = {
+      enable = lib.mkEnableOption {
+        description = "Enable Obsidian.";
+        default = false;
+      };
+    };
+  };
 
-  config = lib.mkIf config.kubernetes.enable {
+  config = lib.mkIf (config.gui.enable && config.virtualisation.enable) {
 
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
@@ -10,8 +17,7 @@
         # limactl start --vm-type=vz template://ubuntu-lts 
         # a vm of choice in seconds https://lima-vm.io/docs/templates/ 
         lima 
-      ];
-
-    };
+      ];  
+     };
   };
 }
