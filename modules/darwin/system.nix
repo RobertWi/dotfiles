@@ -174,7 +174,7 @@
         };
       };
 
-      system.activationScripts.applications.text = let
+      activationScripts.applications.text = let
         env = pkgs.buildEnv {
           name = "system-applications";
           paths = config.environment.systemPackages;
