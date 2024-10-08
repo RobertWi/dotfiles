@@ -18,7 +18,11 @@
         # a vm of choice in seconds https://lima-vm.io/docs/templates/ 
         lima
         qemu
+        podman
       ];  
-     };
+      
+      home.shellAliases = {
+      aws-azure-login = "docker run --rm -it -v ~/.aws:/root/.aws aws-azure-login/aws-azure-login";
+      };
   };
 }

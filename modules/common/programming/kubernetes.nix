@@ -26,7 +26,7 @@
         velero
         node2nix
         ungoogled-chromium
-        aws-azure-login #pulls in chromium no aarch64-darwin available
+        # aws-azure-login pulls in chromium no aarch64-darwin available use container
         stern
       ];
 
