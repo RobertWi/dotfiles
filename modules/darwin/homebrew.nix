@@ -37,6 +37,7 @@
         "joplin" #marked as broken in nixos
         "mongodb-compass" # not available on aarch64-apple-darwin
         "nosqlbooster-for-mongodb" # not available on nix
+        "leapp" 
       ];
       # masApps needs ID with mas cli > mas search Yoink
       masApps = {

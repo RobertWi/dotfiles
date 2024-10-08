@@ -28,6 +28,7 @@
       pkgs.vault-bin
       pkgs.consul
       pkgs.keepassxc
+      pkgs.leap
       pkgs.lynx
       pkgs.mkalias
       pkgs.noti # Create notifications programmatically
