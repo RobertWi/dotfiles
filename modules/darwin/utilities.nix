@@ -32,7 +32,6 @@
       pkgs.mkalias
       pkgs.noti # Create notifications programmatically
       pkgs.ipcalc # Make IP network calculations
-      pkgs.xquartz
       (pkgs.writeShellApplication {
         name = "ocr";
         runtimeInputs = [ pkgs.tesseract ];
