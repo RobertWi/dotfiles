@@ -29,7 +29,7 @@
       pkgs.consul
       pkgs.keepassxc
       pkgs.lynx
-      pkgs.mkalias
+      pkgs.devenv
       pkgs.noti # Create notifications programmatically
       pkgs.ipcalc # Make IP network calculations
       pkgs.xquartz

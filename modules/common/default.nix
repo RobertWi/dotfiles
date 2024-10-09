@@ -101,7 +101,7 @@
       bat
       dig
       dos2unix
-      devenv
+      mkalias
     ];
 
     # Use the system-level nixpkgs instead of Home Manager's
