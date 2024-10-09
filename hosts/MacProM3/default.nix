@@ -23,6 +23,7 @@ inputs.darwin.lib.darwinSystem {
     {
       networking.hostName = "MacProM3";
       identityFile = "/Users/${globals.user}/.ssh/id_ed25519";
+      mac-app-util.enable = true; 
       db.enable = true;
       devel.enable = true; 
       gui.enable = true;
