@@ -186,10 +186,14 @@
         echo "setting up /Applications..." >&2
         rm -rf /Applications/Nix\ Apps
         mkdir -p /Applications/Nix\ Apps
-        find ${env}/Applications -maxdepth 1 -xtype l -exec readlink '{}' + |   
+        echo ${env}
+        find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |   
         while read src; do
           app_name=$(basename "$src")
           echo "copying $src" >&2
+          echo "${pkgs.mkalias}
+          echo ${src}
+          echo ${appname}
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
