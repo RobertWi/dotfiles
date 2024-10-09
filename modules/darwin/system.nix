@@ -17,7 +17,7 @@
       Day = 1;
     };
 
-    environment.shells = [ pkgs.fish ];
+    environment.shells = [ pkgs.fish pkgs.zsh];
 
     security.pam.enableSudoTouchIdAuth = true;
 
@@ -186,7 +186,7 @@
         echo "setting up /Applications..." >&2
         rm -rf /Applications/Nix\ Apps
         mkdir -p /Applications/Nix\ Apps
-        find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+        find ${env}/Applications -maxdepth 1 -xtype l -exec readlink '{}' + |   
         while read src; do
           app_name=$(basename "$src")
           echo "copying $src" >&2
