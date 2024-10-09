@@ -44,11 +44,7 @@
     home.packages = [
       (pkgs.writeShellScriptBin "gh-repos" ''
         case $1 in
-            t2) organization="take-two" ;;
-            d2c) organization="take-two-t2gp" ;;
-            t2gp) organization="take-two-t2gp" ;;
-            pd) organization="private-division" ;;
-            dots) organization="playdots" ;;
+            work) organization="rabobank" ;;
             *) organization="RobertWi" ;;
         esac
 

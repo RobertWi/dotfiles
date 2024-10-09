@@ -101,7 +101,8 @@
       bat
       dig
       dos2unix
-      mkalias
+      openssl
+      keytool
     ];
 
     # Use the system-level nixpkgs instead of Home Manager's
