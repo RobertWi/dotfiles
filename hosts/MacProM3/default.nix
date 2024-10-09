@@ -9,21 +9,18 @@ inputs.darwin.lib.darwinSystem {
   modules = [
     ../../modules/common
     ../../modules/darwin
-    #something is wrong here not using global set in flake.nix 
     ( 
-      globals
-      // rec {
-        user = "robertwinder";
-        gitName = "RobertWi";
-        gitEmail = "1311049+RobertWi@users.noreply.github.com";
-      }
+    {
+      user = globals.user;
+      gitName = globals.gitName;
+      gitEmail = globals.gitEmail;
+    }
     )  
     inputs.home-manager.darwinModules.home-manager
     inputs.mac-app-util.darwinModules.default
     {
       networking.hostName = "MacProM3";
       identityFile = "/Users/${globals.user}/.ssh/id_ed25519";
-      mac-app-util.enable = true; 
       db.enable = true;
       devel.enable = true; 
       gui.enable = true;
@@ -35,6 +32,7 @@ inputs.darwin.lib.darwinSystem {
       terraform.enable = true;
       kubernetes.enable = true;
       virtualisation.enable = true; 
+      targets.darwin.mac-app-util.enable = true; 
     }
   ];
 }
