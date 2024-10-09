@@ -191,7 +191,7 @@
         while read src; do
           app_name=$(basename "$src")
           echo "copying $src" >&2
-          echo "${pkgs.mkalias}
+          echo ${pkgs.mkalias}
           echo ${src}
           echo ${appname}
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
